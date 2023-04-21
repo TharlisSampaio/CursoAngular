@@ -1,0 +1,26 @@
+<form [formGroup]="cadastroForm" (ngSubmit)="submitForm()">
+    <label>Name:
+        <input type="text" formControlName="firstName">
+        <span *ngIf="cadastroForm.get('firstName')?.errors"> Preencha o campo</span>
+    </label>
+    <br>
+
+    <label>Sobrenome
+        <input type="text" formControlName="lastName" maxlength="5">
+        <span class="alert"
+            *ngIf="cadastroForm.get('lastName')?.errors && (cadastroForm.get('lastName')?.touched || cadastroForm.get('lastName')?.dirty)">
+                deve ter no minimo
+                {{ cadastroForm.get('lastName')?.errors }}
+        </span>
+    </label>
+
+
+    <!-- <P>{{ cadastroForm.get('firstName')?.value }}</P> -->
+    <p>{{ cadastroForm.get('firstName')?.errors | json }}
+        {{ cadastroForm.get('lastName')?.errors | json }}
+
+    </p>
+
+    <button [disabled]="cadastroForm.invalid">Enviar</button>
+
+</form>
