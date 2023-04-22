@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sobre',
@@ -8,7 +8,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SobreComponent implements OnInit{
 
-  constructor(private activatedRoute: ActivatedRoute){}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ){}
 
   ngOnInit(): void {
     // params é para pegar os parametros da rota no exemplo id e username
@@ -20,6 +23,15 @@ export class SobreComponent implements OnInit{
     this.activatedRoute.queryParams.subscribe(
       res => console.log(res['idade'])
     )
+
+    setInterval( () => {
+      // navigate() não irá fazer o reload da pagina
+      this.router.navigate(['404']);
+
+      // navigateByUrl() irá fazer o reload da página
+      // this.router.navigateByUrl('404')
+    }, 5000)
+
   }
 
 }
