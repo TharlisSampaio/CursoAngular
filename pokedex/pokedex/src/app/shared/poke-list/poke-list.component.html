@@ -5,6 +5,7 @@ esse valor sera resgatado pelo componente poke-list com a função getSearch()--
 
 <section class="listagem">
     <ng-template ngFor let-pokemon [ngForOf]="getAllPokemons">
+        <!-- passagem de paramentro para details/id -->
         <a [routerLink]="['details', pokemon.status.id]" class="pokemon" *ngIf="pokemon.status">
             <section class="pokemon__status">
                 <h2>{{pokemon.name}}</h2>

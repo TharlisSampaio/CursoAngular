@@ -11,6 +11,7 @@ const routes: Routes = [
         component: HomeComponent
     },
     {
+        // Faz com que o details aceito o paramentro id
         path: 'details/:id',
         component: DetailsComponent
     }
