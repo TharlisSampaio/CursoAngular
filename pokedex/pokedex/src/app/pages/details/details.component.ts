@@ -26,7 +26,7 @@ export class DetailsComponent implements OnInit{
     this.getPokemon;
   }
 
-  get getPokemon(){
+  public getPokemon(){
     // Atraves do RouterLink que faz a passagem de paramentro do componente poke-list
     const id = this.activatedRoute.snapshot.params['id']; // recuperando o parametro de poke-list
     const pokemon = this.pokeApiService.apiGetPokemons(`${this.urlPokemon}/${id}`);
