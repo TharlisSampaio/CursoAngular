@@ -1,0 +1,16 @@
+<p>
+    <strong>Olá, Tharlis S. Seixas</strong><br>
+    Ag: 9999, CO: 99999-1
+</p>
+
+<P>
+    Poupança: R$ {{ getPoupanca }} <br>
+    <input type="text" #sacar>
+    <button (click)="setSacar(sacar.value)">Sacar</button>
+</P>
+
+<P>
+    Carteira: R$ {{ getCarteira }} <br>
+    <input type="text" #depositar>
+    <button (click)="setDepositar(depositar.value)">Sacar</button>
+</P>
