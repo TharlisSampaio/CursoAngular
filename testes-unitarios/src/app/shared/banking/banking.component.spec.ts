@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BankingComponent } from './banking.component';
+import { DebugElement } from '@angular/core';
 
 describe('BankingComponent', () => {
   let component: BankingComponent;
@@ -14,7 +15,7 @@ describe('BankingComponent', () => {
 
     fixture = TestBed.createComponent(BankingComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -59,12 +60,23 @@ describe('BankingComponent', () => {
 
   it(`(I) setDepositar(): shoud transfer carteira from poupanca`, () => {
     let el = fixture.debugElement.nativeElement;
-    el.quetySelector('#input-depositar').value = "10";
+
+    el.querySelector('#input-depositar').value = '10';
     el.querySelector('#depositar').click();
     fixture.detectChanges();
 
-    expect(el.querySelector('#get-poupanca')).toEqual(20);
-    expect(component.getPoupanca).toEqual(20);
-    expect(component.getCarteira).toEqual(40);
+    expect(el.querySelector('#get-poupanca').textContent).toEqual('20');
+    expect(el.querySelector('#get-carteira').textContent).toEqual('40');
+  });
+
+  it(`(I) setSacar(): shoud transfer poupanca from carteira`, () => {
+    let el = fixture.debugElement.nativeElement;
+
+    el.querySelector('#input-sacar').value = '10';
+    el.querySelector('#sacar').click();
+    fixture.detectChanges();
+
+    expect(el.querySelector('#get-poupanca').textContent).toEqual('0');
+    expect(el.querySelector('#get-carteira').textContent).toEqual('60');
   });
 });
